@@ -10,6 +10,7 @@ let artworksArray = Object.values(retrievedArray);
 let roundEl = document.querySelector(".title__artist");
 let playerScore = document.querySelector("#player-score");
 let playerRound = document.querySelector("#player-round");
+let canClickNewAnswer = true; //----- variable declaration for canClickNewAnswer -heidi
 
 // Info popup
 const startButton = document.querySelector("#button-start");
@@ -89,23 +90,31 @@ function renderRound(round) {
     container.appendChild(artworkEl);
 
     artworkEl.addEventListener("click", function () {
-      if (i === correctAnswerIndex) {
-        score += 1;
-        showFeedback(true); //------shows feedback if its correct -heidi
-      } else {
-        showFeedback(false); //------shows feedback if its wrong -heidi
-      }
+      if (canClickNewAnswer) {
+        canClickNewAnswer = false; //-----added condtion where player cannot click for a new answer after 2 seconds (adds delay to answer in the new round)----Heidi
+        if (i === correctAnswerIndex) {
+          score += 1;
+          showFeedback(true); //------shows feedback if its correct -heidi
+        } else {
+          showFeedback(false); //------shows feedback if its wrong -heidi
+        }
 
-      playerScore.textContent = `Score: ${score}`;
-      playerRound.textContent = `Round: ${currentRound + 2}`;
+        playerScore.textContent = `Score: ${score}`;
+        playerRound.textContent = `Round: ${currentRound + 2}`;
 
-      if (currentRound === 4) {
-        displayEndMessage(score);
-      } else {
-        currentRound += 1;
-        renderRound(getCards()[currentRound]);
+        setTimeout(() => {
+          //---------- added a condition where player can now click after 2 seconds same as the feedback time. line 105-108 -Heidi
+          canClickNewAnswer = true;
+        }, 2000);
+
+        if (currentRound === 4) {
+          displayEndMessage(score);
+        } else {
+          currentRound += 1;
+          renderRound(getCards()[currentRound]);
+        }
+        window.scrollTo(0, 0); //-----automatically scrolss up the screen -heidi
       }
-      window.scrollTo(0, 0); //-----automatically scrolss up the screen -heidi
     });
   });
 }
