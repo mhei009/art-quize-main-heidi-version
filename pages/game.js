@@ -1,6 +1,9 @@
 let rounds;
 let score = 0;
-let currentRound = 0;
+let currentRound = 0; // ---------------------------------------------------------------------------------------------
+// Get items/arrays from local storage and create a new variable where this array will be stored
+// ---------------------------------------------------------------------------------------------
+
 let getStorageArray = localStorage.getItem("latestCardsList");
 let retrievedArray = JSON.parse(getStorageArray);
 let artworksArray = Object.values(retrievedArray);
@@ -54,17 +57,17 @@ function getCards() {
   return chunks;
 }
 
-// Move showFeedback outside of getCards
+//  ---------- Answer feedback line 61-71 -heidi
 function showFeedback(isCorrect) {
   const feedbackMessage = document.getElementById("feedback-message");
   feedbackMessage.textContent = isCorrect
-    ? "Correct! Well done!"
-    : "Oops! Incorrect answer.";
+    ? "Correct! Well done! ✅ "
+    : "Oops! Incorrect answer ❌";
   feedbackMessage.style.color = isCorrect ? "green" : "red";
 
   setTimeout(() => {
     feedbackMessage.textContent = "";
-  }, 2000);
+  }, 2000); //----shows the answer feed back for 2 seconds -heidi
 }
 
 function renderRound(round) {
@@ -88,9 +91,9 @@ function renderRound(round) {
     artworkEl.addEventListener("click", function () {
       if (i === correctAnswerIndex) {
         score += 1;
-        showFeedback(true);
+        showFeedback(true); //------shows feedback if its correct -heidi
       } else {
-        showFeedback(false);
+        showFeedback(false); //------shows feedback if its wrong -heidi
       }
 
       playerScore.textContent = `Score: ${score}`;
@@ -102,14 +105,10 @@ function renderRound(round) {
         currentRound += 1;
         renderRound(getCards()[currentRound]);
       }
-      window.scrollTo(0, 0);
+      window.scrollTo(0, 0); //-----automatically scrolss up the screen -heidi
     });
   });
 }
-
-renderRound(getCards()[currentRound]);
-
-// Rest of the code...
 
 renderRound(getCards()[currentRound]);
 // --------------------------------------------------------------------------

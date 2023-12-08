@@ -4,12 +4,12 @@
 @import url(../blocks/Info.css);
 @import url(../blocks/Main.css);
 @import url(../blocks/Popup.css);
-@import url(../blocks/Player.css); /*added ANSWER FEEDBACK*/
+@import url(../blocks/Player.css); /*added answer feedback style*/
 @import url(../blocks/Card.css);
 @import url(../blocks/Gallery.css);
 @import url(../blocks/Title.css);
 @import url(../blocks/Rotation.css);
 @import url(../blocks/Footer.css);
 @import url(../blocks/Result.css);
-@import url(../blocks/loader.css);
-@import url(../blocks/timer.css);
+@import url(../blocks/Loader.css); /*loading screen*/
+@import url(../blocks/Timer.css); /*timer style */

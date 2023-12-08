@@ -1,11 +1,10 @@
-//for the timer -heidi*
+//-------for the timer. line 1-7  -heidi*
 const countdownElement = document.getElementById("countdown");
 const countdownContainer = document.getElementById("countdown-timer");
 
 function updateCountdown(seconds) {
   countdownElement.textContent = seconds;
-}
-//*
+} //*
 
 class ArtApi {
   constructor(config) {
@@ -55,7 +54,7 @@ function addPlayerName() {
 
 addPlayerName();
 
-$("#loading-wrapper ").show(); //puts the loader in to functioh. (shows the loader while fetching from the  api - heidi)
+$("#loading-wrapper ").show(); //----puts the loader in to function. shows the loader while fetching from the  api
 
 // get cards from API
 function getRandomCards() {
@@ -82,10 +81,10 @@ function getRandomCards() {
 
     .finally(() => {
       $("#loading-wrapper").fadeOut("slow", function () {
-        //the loader stops when the page is ready and fades out. -heidi
-        countdownContainer.style.display = "none"; // Hides the countdown timer until loading is complete -heidi
-        countdownContainer.style.display = "block"; // shows timer when loading is comlete and is in the memorization area. -heidi
-        countdownAndRedirect(); //automatically starts the timer when the page is completely loaded -heidi
+        //----the loader stops when the page is ready and fades out. -heidi
+        countdownContainer.style.display = "none"; //---- Hides the countdown timer until loading is complete -heidi
+        countdownContainer.style.display = "block"; //----shows timer when loading is comlete and is in the memorization area. -heidi
+        countdownAndRedirect(); //----automatically starts the timer when the page is completely loaded -heidi
       });
     });
 }
@@ -133,9 +132,9 @@ function redirectToGamePage() {
   }
 }
 
-// Function to handle the countdown and redirect -heidi
+// ------Function to handle the countdown and redirect -heidi
 function countdownAndRedirect() {
-  const countdownDuration = 12; // 12 seconds
+  const countdownDuration = 12; // ----12 seconds
   startCountdown(countdownDuration, redirectToGamePage);
 }
 
